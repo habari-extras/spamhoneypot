@@ -20,7 +20,7 @@ class SpamHoneyPot extends Plugin
 			'url' => 'http://seancoates.com/habari',
 			'author' => 'Sean Coates',
 			'authorurl' => 'http://seancoates.com/',
-			'version' => '1.0',
+			'version' => '1.0.1',
 			'description' => 'Entraps spammers with a honeypot comment field',
 			'license' => 'Apache License 2.0',
 		);
@@ -28,7 +28,7 @@ class SpamHoneyPot extends Plugin
 	
 	public function filter_final_output ( $out ) {
 		// this sucks, fwiw, but there's no way to properly capture a comment form, currently
-		$tokenizer = new HTMLTokenizer( $out );
+		$tokenizer = new HTMLTokenizer( $out, false );
 		$tokens = $tokenizer->parse();
 		$slices = $tokens->slice( 'textarea', array( 'id' => 'content' ) );
 		// no comment form...
