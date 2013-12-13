@@ -45,6 +45,8 @@ class SpamHoneyPot extends Plugin
 			return $spam_rating;
 		}
 
+		$spamcheck = [];
+
 		if( !empty( $extra[ 'more_content' ]) ) {
 			$comment->status = Comment::STATUS_SPAM;
 			$spamcheck[] = _t('Caught by the honeypot');
